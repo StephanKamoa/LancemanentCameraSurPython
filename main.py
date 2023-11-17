@@ -1,21 +1,21 @@
 import cv2
 
-cap = cv2.VideoCapture(0)
+capture = cv2.VideoCapture(0)
 
-fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('output.avi',fourcc, 25.0, (640,480))
+test = cv2.VideoWriter_fourcc(*'XVID')
+sortie = cv2.VideoWriter('vidéo.avi',test, 25.0, (640,480))
 
-while( cap.isOpened() ):
-    ret, frame = cap.read()
+while( capture.isOpened() ):
+    ret, frame = capture.read()
     if ret == True:
         frame = cv2.flip(frame,1)
-        out.write(frame)
+        sortie.write(frame)
         cv2.imshow('frame' , frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     else:
         break
 
-cap.release()
-out.release()
-cv2.destroyAllWindows(10)
+capture.release()
+sortie.release()
+cv2.destroyAllWindows()
